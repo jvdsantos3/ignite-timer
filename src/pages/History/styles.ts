@@ -1,9 +1,8 @@
 import styled from 'styled-components'
 
 export const HistoryContainer = styled.main`
-  flex: 1;
+  height: 100%;
   padding: 3.5rem;
-
   display: flex;
   flex-direction: column;
 
@@ -13,10 +12,22 @@ export const HistoryContainer = styled.main`
   }
 `
 
-export const HistoryList = styled.main`
+export const HistoryList = styled.div`
   flex: 1;
-  overflow: auto;
   margin-top: 2rem;
+  overflow: auto;
+
+  ::-webkit-scrollbar {
+    width: 2px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: ${(props) => props.theme['green-700']};
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: ${(props) => props.theme['green-500']};
+  }
 
   table {
     width: 100%;
@@ -30,12 +41,10 @@ export const HistoryList = styled.main`
       color: ${(props) => props.theme['gray-100']};
       font-size: 0.875rem;
       line-height: 1.6;
-
       &:first-child {
         border-top-left-radius: 8px;
         padding-left: 1.5rem;
       }
-
       &:last-child {
         border-top-right-radius: 8px;
         padding-right: 1.5rem;
@@ -75,7 +84,6 @@ export const Status = styled.span<StatusProps>`
   display: flex;
   align-items: center;
   gap: 0.5rem;
-
   &::before {
     content: '';
     width: 0.5rem;

@@ -4,7 +4,7 @@ import { CyclesContext } from '../../../../contexts/CyclesContext'
 import { useFormContext } from 'react-hook-form'
 
 export function NewCycleForm() {
-  const { activeCycle } = useContext(CyclesContext)
+  const { cycles, activeCycle } = useContext(CyclesContext)
   const { register } = useFormContext()
 
   return (
@@ -20,10 +20,9 @@ export function NewCycleForm() {
       />
 
       <datalist id="task-suggestions">
-        <option value="Projeto 1" />
-        <option value="Projeto 2" />
-        <option value="Projeto 3" />
-        <option value="Projeto 4" />
+        {cycles.map((cycle) => {
+          return <option key={cycle.id} value={cycle.task} />
+        })}
       </datalist>
 
       <label htmlFor="minutesAmount">durante</label>
